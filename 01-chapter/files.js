@@ -19,11 +19,18 @@ const fs = require("fs");
 // });
 
 // directories
-fs.mkdir("./assets", err => {
-  if (err) {
+if (!fs.existsSync("./assets")) {
+  fs.mkdir("./assets", err => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("folder created");
+  });
+} else {
+  fs.rmdir("./assets", err => {
     console.log(err);
-  }
-  console.log("folder created");
-});
+  });
+  console.log("folder deleted");
+}
 
 // deleting files
