@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "nodemon server"
+  },
+  "name": "02-chapter",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobisamcode/expressjs.ninja.git"
+  },
+  "author": "tobisam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tobisamcode/expressjs.ninja/issues"
+  },
+  "homepage": "https://github.com/tobisamcode/expressjs.ninja#readme",
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
