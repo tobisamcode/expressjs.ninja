@@ -3,6 +3,9 @@ const express = require("express");
 // express app
 const app = express();
 
+// register view engine
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   //   res.send("<p> home page </p>");
   res.sendFile("./views/index.html", { root: __dirname });
