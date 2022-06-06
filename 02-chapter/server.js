@@ -13,6 +13,8 @@ app.listen(3000, () => {
   console.log("server runing");
 });
 
+app.use(morgan("dev"));
+
 app.get("/", (req, res) => {
   const blogs = [
     {
