@@ -7,8 +7,11 @@ const app = express();
 
 // connect to mongodb
 const dbURI =
-  "mongodb+srv://netninja:test1234@nodeninja.6cx5y.mongodb.net/nodeninja?retryWrites=true&w=majority";
-mongoose.connect(dbURI);
+  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0";
+mongoose
+  .connect(dbURI)
+  .then(res => console.log("connected"))
+  .catch(err => console.log(err));
 
 // register view engine
 app.set("view engine", "ejs");
