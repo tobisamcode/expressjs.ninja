@@ -1,12 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 // express app
 const app = express();
 
 // connect to mongodb
 const dbURI =
-  "mongodb+srv://netninja:test1234@nodeninja.6cx5y.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://netninja:test1234@nodeninja.6cx5y.mongodb.net/nodeninja?retryWrites=true&w=majority";
+mongoose.connect(dbURI);
 
 // register view engine
 app.set("view engine", "ejs");
