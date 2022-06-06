@@ -1,18 +1,12 @@
 const express = require("express");
 
+const morgan = require("morgan");
+
 // express app
 const app = express();
 
 // register view engine
 app.set("view engine", "ejs");
-
-app.use((req, res, next) => {
-  console.log("new request made:");
-  console.log("host", req.hostname);
-  console.log("path", req.path);
-  console.log("method", req.method);
-  next();
-});
 
 app.get("/", (req, res) => {
   const blogs = [
@@ -30,11 +24,6 @@ app.get("/", (req, res) => {
     }
   ];
   res.render("index", { title: "Home", blogs });
-});
-
-app.use((req, res, next) => {
-  console.log("in the next middleware:");
-  next();
 });
 
 app.get("/about", (req, res) => {
