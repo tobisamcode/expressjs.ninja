@@ -8,6 +8,11 @@ const app = express();
 // register view engine
 app.set("view engine", "ejs");
 
+// listen for request
+app.listen(3000, () => {
+  console.log("server runing");
+});
+
 app.get("/", (req, res) => {
   const blogs = [
     {
@@ -37,8 +42,4 @@ app.get("/blogs/create", (req, res) => {
 // 404 page
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
-});
-// listen for request
-app.listen(3000, () => {
-  console.log("server runing");
 });
