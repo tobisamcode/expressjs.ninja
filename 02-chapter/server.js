@@ -6,12 +6,13 @@ const mongoose = require("mongoose");
 const app = express();
 
 // connect to mongodb
-const dbURI =
-  "mongodb+srv://netninja:test1234@nodeninja.6cx5y.mongodb.net/?retryWrites=true&w=majority";
+const uri =
+  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0";
+// Prints "MongoServerError: bad auth Authentication failed."
 mongoose
-  .connect(dbURI)
-  .then(res => console.log("connected"))
-  .catch(err => console.log(err));
+  .connect(uri, {})
+  .then(() => console.log("connected"))
+  .catch(err => console.log(err.reason));
 
 // register view engine
 app.set("view engine", "ejs");
