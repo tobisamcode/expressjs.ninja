@@ -7,7 +7,7 @@ const app = express();
 
 // connect to mongodb
 const uri =
-  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0";
+  "mongoose.connect('mongodb://nodeblog-shard-00-01.srpro.mongodb.net:27017/?replicaSet=rsName');";
 // Prints "MongoServerError: bad auth Authentication failed."
 mongoose
   .connect(uri, {})
