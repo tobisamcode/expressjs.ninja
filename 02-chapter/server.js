@@ -1,18 +1,36 @@
 const express = require("express");
 const morgan = require("morgan");
-const mongoose = require("mongoose");
-
 // express app
 const app = express();
 
+const { MongoClient } = require("mongodb");
 // connect to mongodb
-const uri =
-  "mongoose.connect('mongodb://nodeblog-shard-00-01.srpro.mongodb.net:27017/?replicaSet=rsName');";
-// Prints "MongoServerError: bad auth Authentication failed."
-mongoose
-  .connect(uri, {})
-  .then(() => console.log("connected"))
-  .catch(err => console.log(err.reason));
+async function main() {
+  const uri =
+    "mongodb+srv://netninja:testing1234@nodeninja.6cx5y.mongodb.net/?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await client.close();
+  }
+}
+
+main().catch(console.error);
+
+async function listDatabases(client) {
+  const databasesList = await client.db().admin().listDatabases();
+
+  console.log("databases:");
+
+  databasesList.databases.forEach(db => {
+    console.log(`- ${db.name}`);
+  });
+}
 
 // register view engine
 app.set("view engine", "ejs");
