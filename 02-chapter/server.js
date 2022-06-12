@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 mongoose.connect(
-  "mongodb+srv://nodeninja.6cx5y.mongodb.net/myFirstDatabase",
+  "mongodb+srv://node:test1234@nodeninja.6cx5y.mongodb.net/nodeninja?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
