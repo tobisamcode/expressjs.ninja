@@ -31,40 +31,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-// mongoose nad mongo sandbox routes
-// app.get("/add-blog", (req, res) => {
-//   const blog = new Blog({
-//     title: "new blog2 created",
-//     snippet: "about my new blog",
-//     body: "more about my new blog"
-//   });
-
-//   blog
-//     .save()
-//     .then(result => {
-//       res.send(result);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
-
-// app.get("/all-blogs", (req, res) => {
-//   Blog.find()
-//     .then(result => {
-//       res.send(result);
-//     })
-//     .catch(err => console.log(err));
-// });
-
-// app.get("/single-blog", (req, res) => {
-//   Blog.findById("62a7104b8eca91ae5d50eec0")
-//     .then(result => {
-//       res.send(result);
-//     })
-//     .catch(err => console.log(err));
-// });
-
 app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
