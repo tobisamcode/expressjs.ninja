@@ -89,6 +89,11 @@ app.post("/blogs", (req, res) => {
     .catch(err => console.log(err));
 });
 
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+});
+
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
 });
