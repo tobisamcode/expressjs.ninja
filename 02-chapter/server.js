@@ -72,6 +72,9 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
+app.get("/blogs/create", (req, res) => {
+  res.render("create", { title: "Create a new blog" });
+});
 
 // blog routes
 app.get("/blogs", (req, res) => {
@@ -80,14 +83,18 @@ app.get("/blogs", (req, res) => {
     .then(result => res.render("index", { title: "All Blogs", blogs: result }))
     .catch(err => console.log(err));
 });
-
 app.post("/blogs", (req, res) => {
+  // console.log(req.body);
   const blog = new Blog(req.body);
 
   blog
     .save()
-    .then(result => res.redirect("/blogs"))
-    .catch(err => console.log(err));
+    .then(result => {
+      res.redirect("/blogs");
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 app.get("/blogs/:id", (req, res) => {
@@ -99,8 +106,14 @@ app.get("/blogs/:id", (req, res) => {
   });
 });
 
-app.get("/blogs/create", (req, res) => {
-  res.render("create", { title: "Create a new blog" });
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+
+  Blog.findByIdAndDelete(id)
+    .then(result => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch(err => console.log(err));
 });
 
 // 404 page
