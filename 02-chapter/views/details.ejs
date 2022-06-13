@@ -12,7 +12,9 @@
         <br />
         <p class="body"><%= blog.body %></p>
       </div>
-      <a class="delete" data-doc="<%= blog._id %>">delete</a>
+      <a class="delete" data-doc="<%= blog._id %>"
+        ><i class="bx bxs-trash"></i
+      ></a>
     </div>
 
     <%- include("./partials/footer.ejs") %>
