@@ -4,28 +4,24 @@ const mongoose = require("mongoose");
 // express app
 const app = express();
 
-mongoose.connect(
-  "mongodb+srv://node:test1234@nodeninja.6cx5y.mongodb.net/nodeninja?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  },
-  err => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("sucessfully connected");
+mongoose
+  .connect(
+    "mongodb+srv://node:test1234@nodeninja.6cx5y.mongodb.net/nodeninja?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     }
-  }
-);
+  )
+  .then(result =>
+    app.listen(3000, () => {
+      console.log("server runing");
+    })
+  )
+  .catch(err => console.log(err));
 
 // register view engine
 app.set("view engine", "ejs");
 
-// listen for request
-app.listen(3000, () => {
-  console.log("server runing");
-});
 // middlewares and static files
 app.use(express.static("public"));
 
